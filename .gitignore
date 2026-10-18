@@ -1,0 +1,17 @@
+@"
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+"@ | Set-Content .gitignore
+
+downloaders/*.wav
+
+# Exclude EM data folder
+EM/

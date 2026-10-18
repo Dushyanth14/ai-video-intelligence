@@ -1,0 +1,71 @@
+✅ WHAT THIS TOOL DOES:
+→ Takes any YouTube URL or audio/video file as input
+→ Transcribes English meetings using local Whisper AI
+→ Transcribes Hindi & Hinglish meetings using Sarvam AI
+→ Summarises the full meeting in bullet points
+→ Extracts action items with owner and deadline
+→ Extracts key decisions made in the meeting
+→ Extracts open questions and follow-ups
+→ Lets you CHAT with your meeting using RAG + ChromaDB
+→ Export full report as PDF or TXT
+
+🛠️ TECH STACK:
+→ Python
+→ OpenAI Whisper (local, free)
+→ Sarvam AI (Hindi/Hinglish transcription)
+→ LangChain LCEL (modern pipeline)
+→ Mistral AI (free API)
+→ ChromaDB (vector database for RAG)
+→ HuggingFace Embeddings (local, free)
+→ Streamlit (UI)
+
+
+
+step1:- Mistral AI (free API) set ups
+
+PHASE 1
+
+
+
+1st file Audio processing.py
+
+yt_dlp:-- yt-dlp = a tool that takes a video URL and gets the video/audio from it.
+from pydub import AudioSegment is used to load, edit, convert, and manipulate audio files in Python.
+
+
+steps 1:- audioprocessor.py
+1. getting audio from URL
+2. converting audio to wav format     """Convert any audio/video file to WAV format using pydub(covert dual audio to mono audio)
+3. chunking audio
+    -chunking
+    -exporting
+    -appending
+
+step -2:- transcriber.py
+1. using wishper loading it and reading it
+2. load a model 
+3. transcribe : transcribe_chunk by passing chunk created in the step 1
+using sarvam for another lang and whisper
+
+step-3 summary.py
+
+using groqai
+splitting the text 
+get the summary based on chunk
+give me final summary based on all the summary
+generate the title of summary 
+
+RunnablePassthrough()	Forward input unchanged, especially when composing more complex chains
+RunnableLambda converts a regular Python function into a LangChain Runnable component
+
+RunnablePassthrough preserves the input, while RunnableLambda applies a custom transformation. Both implement LangChain's Runnable interface, allowing them to connect with other components through the | operator.
+
+
+step -4 extractor.py
+
+step 5
+
+working on rag to enable user to ask the questions used chroma
+
+model_kwargs means model keyword arguments. It is used to pass additional settings or configuration options to the underlying machine learning model.
+
